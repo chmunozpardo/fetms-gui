@@ -1,0 +1,90 @@
+version: "3"
+
+networks:
+  network_backend:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+  network_frontend:
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+
+services:
+  react-frontend:
+    stdin_open: true
+    image: react-frontend
+    container_name: react-frontend-container
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm start
+    networks:
+      network_frontend:
+        ipv4_address: 172.21.0.5
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - fastapi-backend
+
+  fastapi-backend:
+    image: fastapi-backend
+    container_name: fastapi-backend-container
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app
+    environment:
+      - GUNICORN_CMD_ARGS="--reload"
+    entrypoint: /start-reload.sh
+    networks:
+      network_backend:
+        ipv4_address: 172.20.0.6
+      network_frontend:
+        ipv4_address: 172.21.0.6
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+      - redis-cache
+
+  mysql:
+    build: ./bin/mysql
+    container_name: "my-mysql"
+    command: [--default-authentication-plugin=mysql_native_password]
+    restart: "always"
+    ports:
+      - "3360:3306"
+    volumes:
+      - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
+      - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
+    environment:
+      MYSQL_USER: fetms
+      MYSQL_PASSWORD: fetms
+      MYSQL_ROOT_PASSWORD: test
+    networks:
+      network_backend:
+        ipv4_address: 172.20.0.5
+
+  redis-cache:
+    image: redis
+    container_name: redis-container
+    volumes:
+      - volume_redis:/redis/data
+    ports:
+      - "6379:6379"
+    networks:
+      network_backend:
+        ipv4_address: 172.20.0.4
+
+volumes:
+  volume_redis:
+  volume_frontend:
+  volume_backend:

@@ -1,0 +1,53 @@
+from .basemodel import *
+
+
+class TEST_Workmanship_Amplitude(BaseModel):
+    fkHeader = IntegerField()
+    fkFacility = IntegerField()
+    TS = TextField()
+    tilt = FloatField()
+    power_pol0_chA = FloatField()
+    power_pol0_chB = FloatField()
+    power_pol1_chA = FloatField()
+    power_pol1_chB = FloatField()
+    pll_locked = IntegerField()
+    tempsensor1 = FloatField()
+    tempsensor2 = FloatField()
+    CartTemp0 = FloatField()
+    CartTemp1 = FloatField()
+    CartTemp2 = FloatField()
+    CartTemp3 = FloatField()
+    CartTemp4 = FloatField()
+    CartTemp5 = FloatField()
+    CryoTemp0 = FloatField()
+    CryoTemp1 = FloatField()
+    CryoTemp2 = FloatField()
+    CryoTemp3 = FloatField()
+    CryoTemp4 = FloatField()
+    CryoTemp5 = FloatField()
+    CryoTemp6 = FloatField()
+    CryoTemp7 = FloatField()
+    CryoTemp8 = FloatField()
+    CryoTemp9 = FloatField()
+    CryoTemp10 = FloatField()
+    CryoTemp11 = FloatField()
+    CryoTemp12 = FloatField()
+    CPDS_P6V = FloatField()
+    CPDS_N6V = FloatField()
+    CPDS_P15V = FloatField()
+    CPDS_N15V = FloatField()
+    CPDS_P24V = FloatField()
+    CPDS_P8V = FloatField()
+    IJ01 = FloatField()
+    IJ02 = FloatField()
+    IJ11 = FloatField()
+    IJ12 = FloatField()
+    IMag01 = FloatField()
+    IMag02 = FloatField()
+    IMag11 = FloatField()
+    IMag12 = FloatField()
+
+    class Meta:
+        orm_mode = True
+        db_table = 'TEST_Workmanship_Amplitude'
+        primary_key = False

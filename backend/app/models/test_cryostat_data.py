@@ -1,0 +1,51 @@
+from .basemodel import *
+
+
+class TEST_Cryostat_data(BaseModel):
+    fkSubHeader = IntegerField()
+    fkFacility = IntegerField()
+    datatype = IntegerField()
+    date_time = TextField()
+    Time_hours = DoubleField()
+    Pressure1 = DoubleField()
+    Pressure2 = DoubleField()
+    MixerA = DoubleField()
+    MixerB = DoubleField()
+    Cart4K = DoubleField()
+    Cart90K = DoubleField()
+    T5 = DoubleField()
+    T6 = DoubleField()
+    T7 = DoubleField()
+    Cart12k = DoubleField()
+    sensor1_r = DoubleField()
+    sensor1_k = DoubleField()
+    sensor2_r = DoubleField()
+    sensor2_k = DoubleField()
+    sensor3_r = DoubleField()
+    sensor3_k = DoubleField()
+    sensor4_r = DoubleField()
+    sensor4_k = DoubleField()
+    sensor5_r = DoubleField()
+    sensor5_k = DoubleField()
+    sensor6_r = DoubleField()
+    sensor6_k = DoubleField()
+    sensor7_r = DoubleField()
+    sensor7_k = DoubleField()
+    sensor8_r = DoubleField()
+    sensor8_k = DoubleField()
+    sensor9_r = DoubleField()
+    sensor9_k = DoubleField()
+    sensor10_r = DoubleField()
+    sensor10_k = DoubleField()
+    sensor11_r = DoubleField()
+    sensor11_k = DoubleField()
+    sensor12_r = DoubleField()
+    sensor12_k = DoubleField()
+    sensor13_r = DoubleField()
+    sensor13_k = DoubleField()
+    TS = TimestampField()
+
+    class Meta:
+        orm_mode = True
+        db_table = 'TEST_Cryostat_data'
+        primary_key = False
