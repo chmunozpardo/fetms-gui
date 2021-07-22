@@ -93,11 +93,9 @@ async def getNoiseTemperatureResults(keyheader: int, temp: Optional[bool] = True
                 }
         data[-1].append(item)
     if temp:
-        max_y = math.ceil(max_y/100.0)
-        max_y = max_y*100.0
+        max_y = math.ceil(max_y/100.0)*100.0
     else:
-        max_y = math.ceil(max_y/5.0)
-        max_y = max_y*5.0
+        max_y = math.ceil(max_y/5.0)*5.0
     result = {
         "minFreq": min_freq,
         "maxFreq": max_freq,

@@ -3,6 +3,7 @@ import FrontEndsComponents from '../tables/FrontEndComponents';
 import NoiseTemperatureList from '../tables/NoiseTemperatureList';
 import WorkmanshipAmplitudeList from '../tables/WorkmanshipAmplitudeList';
 import BeamPatternList from '../tables/BeamPatternList';
+import LOLockingList from '../tables/LOLockingList';
 import { Row, Col, Container } from 'react-bootstrap';
 import { Dropdown } from 'semantic-ui-react';
 import { componentsOptions, measurementOptions } from '../utils/frontEndUtils';
@@ -79,6 +80,17 @@ function FrontEndData(props) {
       isLoaded: useState(false),
       show: useState(true),
       component: BeamPatternList
+    },
+    {
+      value: 'loLocking',
+      label: "LO Locking",
+      url: () => {
+        return process.env.REACT_APP_DB_HOSTNAME + "/test_data/lo_locking/list?config=" + config.current + optParam.current
+      },
+      items: useState(null),
+      isLoaded: useState(false),
+      show: useState(true),
+      component: LOLockingList
     }
   ];
 

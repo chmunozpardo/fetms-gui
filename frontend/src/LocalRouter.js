@@ -4,6 +4,7 @@ import FrontEndsList from './components/FrontEndsList';
 import FrontEndDataRouter from './components/FrontEndData';
 import BeamPattern from './components/BeamPattern';
 import NoiseTemperature from './components/NoiseTemperature';
+import LOLocking from './components/LOLocking';
 import WorkmanshipAmplitude from './components/WorkmanshipAmplitude';
 import { Row, Col, Container } from 'react-bootstrap';
 import NraoLoader from './components/loaders/NraoLoader';
@@ -40,6 +41,8 @@ class LocalRouter extends Component {
         <Route path="/health_check">
         </Route>
         <Route path="/noise_temperature" component={NoiseTemperature}>
+        </Route>
+        <Route path="/lo_locking" component={LOLocking}>
         </Route>
         <Route path="/workmanship_amplitude" component={WorkmanshipAmplitude}>
         </Route>

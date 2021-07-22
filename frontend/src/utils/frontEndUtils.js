@@ -80,5 +80,10 @@ export const measurementOptions = [
     key: 'Beam Pattern',
     text: 'Beam Pattern',
     value: 'beamPattern',
+  },
+  {
+    key: 'LO Locking',
+    text: 'LO Locking',
+    value: 'loLocking',
   }
 ]
