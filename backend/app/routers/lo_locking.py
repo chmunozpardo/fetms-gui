@@ -2,13 +2,8 @@ import sys
 import math
 from typing import Optional
 from fastapi import APIRouter
-from peewee import JOIN, fn
-from app.models.front_ends import Front_Ends
-from app.models.fe_config import FE_Config
-from app.models.testdata_header import TestData_header
 from app.models.test_lolocktest_subheader import TEST_LOLockTest_SubHeader
 from app.models.test_lolocktest import TEST_LOLockTest
-from playhouse.shortcuts import model_to_dict
 
 
 routerLOLocking = APIRouter(
@@ -18,7 +13,7 @@ routerLOLocking = APIRouter(
 
 
 @routerLOLocking.get("/results", summary="Result of Health Check")
-async def getLOLockingResults(keyheader: int, temp: Optional[bool] = True):
+async def getLOLockingResults(keyheader: int):
     data = []
     LOT = TEST_LOLockTest.alias()
     LOT_SH = TEST_LOLockTest_SubHeader.alias()

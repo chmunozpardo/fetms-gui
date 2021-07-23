@@ -85,5 +85,10 @@ export const measurementOptions = [
     key: 'LO Locking',
     text: 'LO Locking',
     value: 'loLocking',
+  },
+  {
+    key: 'IF Spectrum',
+    text: 'IF Spectrum',
+    value: 'ifSpectrum',
   }
 ]

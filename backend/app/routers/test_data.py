@@ -93,6 +93,7 @@ async def getYFactor(config: int, band: int):
         result.append(item)
     return result
 
+
 @routerTestData.get("/lo_locking/list", summary="List of Front Ends")
 async def getLOLocking(config: int, band: int):
     result = []
@@ -103,6 +104,31 @@ async def getLOLocking(config: int, band: int):
     query = TD_H.select(TD_H, FE_C) \
         .join(FE_C, on=(TD_H.fkFE_Config == FE_C.keyFEConfig)) \
         .where((FE_C.fkFront_Ends == front_end) & (TD_H.fkTestData_Type == 57) & (TD_H.Band == band)) \
+        .order_by(TD_H.keyId.desc())
+    for test_data in query:
+        item = {
+            "FETMS_Description": test_data.FETMS_Description,
+            "Notes": test_data.Notes,
+            "TS": test_data.TS,
+            "keyId": test_data.keyId,
+            "FE_Config": test_data.fe_config.keyFEConfig,
+            "fkFE_Components": test_data.fkFE_Components,
+            "fkDataStatus": test_data.fkDataStatus
+        }
+        result.append(item)
+    return result
+
+
+@routerTestData.get("/if_spectrum/list", summary="List of Front Ends")
+async def getIFSpectrum(config: int, band: int):
+    result = []
+    TD_H = TestData_header.alias()
+    FE_C = FE_Config.alias()
+    front_end = FE_C.select(FE_C.fkFront_Ends) \
+        .where(FE_C.keyFEConfig == config).get().fkFront_Ends
+    query = TD_H.select(TD_H, FE_C) \
+        .join(FE_C, on=(TD_H.fkFE_Config == FE_C.keyFEConfig)) \
+        .where((FE_C.fkFront_Ends == front_end) & (TD_H.fkTestData_Type == 7) & (TD_H.Band == band)) \
         .order_by(TD_H.keyId.desc())
     for test_data in query:
         item = {

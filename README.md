@@ -9,9 +9,29 @@ It consist of four Docker containers:
 Progress so far:
  - **Backend**
    - Can retrieve the list of FrontEnds for the last `FE_Config`
-   - Can retrieve the list of Noise Temperature, Workmanship Amplitude and Beam Pattern measurements for a given `FE_Config` and `Band`
-   - Can retrieve the data from a Noise Temperature, Workmanship Amplitude and Beam Pattern measurement given a `TestData_header` `keyId`
+   - For a given `FE_Config` and `Band` can retrieve the list for:
+     - Noise Temperature
+     - Workmanship Amplitude
+     - Beam Pattern
+     - LO Locking
+     - IF Spectrum
+   - For a given a `TestData_header` `keyId` can retrieve the data for:
+     - Noise Temperature
+     - Workmanship Amplitude
+     - Beam Pattern
+     - LO Locking
+     - IF Spectrum
  - **Frontend**
    - Can display the list of FrontEnds for the last `FE_Config`
-   - Can display the list of Noise Temperature, Workmanship Amplitude and Beam Pattern measurements for a given `FE_Config` and `Band`
-   - Can display the data from a Noise Temperature, Workmanship Amplitude and Beam Pattern measurement given a `TestData_header` `keyId`
+   - For a given `FE_Config` and `Band` can display the list for:
+     - Noise Temperature
+     - Workmanship Amplitude
+     - Beam Pattern
+     - LO Locking
+     - IF Spectrum
+   - For a given a `TestData_header` `keyId` can display the data for
+     - Noise Temperature
+     - Workmanship Amplitude
+     - Beam Pattern
+     - LO Locking
+     - IF Spectrum

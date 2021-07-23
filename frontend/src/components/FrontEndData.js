@@ -4,13 +4,13 @@ import NoiseTemperatureList from '../tables/NoiseTemperatureList';
 import WorkmanshipAmplitudeList from '../tables/WorkmanshipAmplitudeList';
 import BeamPatternList from '../tables/BeamPatternList';
 import LOLockingList from '../tables/LOLockingList';
+import IFSpectrumList from '../tables/IFSpectrumList';
 import { Row, Col, Container } from 'react-bootstrap';
 import { Dropdown } from 'semantic-ui-react';
 import { componentsOptions, measurementOptions } from '../utils/frontEndUtils';
 import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import NraoLoader from './loaders/NraoLoader';
-import AlmaLoader from './loaders/AlmaLoader';
 import axios from 'axios';
 
 function FrontEndData(props) {
@@ -91,6 +91,17 @@ function FrontEndData(props) {
       isLoaded: useState(false),
       show: useState(true),
       component: LOLockingList
+    },
+    {
+      value: 'ifSpectrum',
+      label: "IF Spectrum",
+      url: () => {
+        return process.env.REACT_APP_DB_HOSTNAME + "/test_data/if_spectrum/list?config=" + config.current + optParam.current
+      },
+      items: useState(null),
+      isLoaded: useState(false),
+      show: useState(true),
+      component: IFSpectrumList
     }
   ];
 
