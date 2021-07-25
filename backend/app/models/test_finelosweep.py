@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_FineLOSweep(BaseModel):
@@ -12,5 +12,5 @@ class TEST_FineLOSweep(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_FineLOSweep'
+        db_table = "TEST_FineLOSweep"
         primary_key = False

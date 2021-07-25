@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Locations(BaseModel):
@@ -8,5 +8,5 @@ class Locations(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Locations'
+        db_table = "Locations"
 

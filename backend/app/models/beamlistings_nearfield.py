@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class BeamListings_nearfield(BaseModel):
@@ -12,5 +12,5 @@ class BeamListings_nearfield(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'BeamListings_nearfield'
-        primary_key = CompositeKey('fkScanDetails', 'x', 'y')
+        db_table = "BeamListings_nearfield"
+        primary_key = CompositeKey("fkScanDetails", "x", "y")

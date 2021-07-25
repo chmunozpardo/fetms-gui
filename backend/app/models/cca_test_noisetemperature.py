@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TEST_NoiseTemperature(BaseModel):
@@ -15,5 +15,5 @@ class CCA_TEST_NoiseTemperature(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TEST_NoiseTemperature'
+        db_table = "CCA_TEST_NoiseTemperature"
         primary_key = False

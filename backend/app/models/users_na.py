@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Users_NA(BaseModel):
@@ -10,5 +10,5 @@ class Users_NA(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Users_NA'
+        db_table = "Users_NA"
         primary_key = False

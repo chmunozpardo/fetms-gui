@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_urls(BaseModel):
@@ -18,5 +18,5 @@ class CCA_urls(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_urls'
+        db_table = "CCA_urls"
 

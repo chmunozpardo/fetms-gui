@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_Cryostat_data(BaseModel):
@@ -47,5 +47,5 @@ class TEST_Cryostat_data(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_Cryostat_data'
+        db_table = "TEST_Cryostat_data"
         primary_key = False

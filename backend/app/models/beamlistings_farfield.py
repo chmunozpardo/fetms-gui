@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class BeamListings_farfield(BaseModel):
@@ -12,5 +12,5 @@ class BeamListings_farfield(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'BeamListings_farfield'
-        primary_key = CompositeKey('fkScanDetails', 'x', 'y')
+        db_table = "BeamListings_farfield"
+        primary_key = CompositeKey("fkScanDetails", "x", "y")

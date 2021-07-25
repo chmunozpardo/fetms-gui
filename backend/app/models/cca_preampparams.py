@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_PreampParams(BaseModel):
@@ -22,5 +22,4 @@ class CCA_PreampParams(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_PreampParams'
-
+        db_table = "CCA_PreampParams"

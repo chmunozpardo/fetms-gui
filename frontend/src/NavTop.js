@@ -20,6 +20,12 @@ export class NavTop extends Component {
             <Nav.Item>
               <Nav.Link as={Link} to="/front_ends">Front End List</Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link as={Link} to="/login">Login</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link as={Link} to="/current">Current</Nav.Link>
+            </Nav.Item>
           </Nav>
 
         </Navbar>

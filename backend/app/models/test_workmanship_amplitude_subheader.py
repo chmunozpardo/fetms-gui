@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_Workmanship_Amplitude_SubHeader(BaseModel):
@@ -18,5 +18,7 @@ class TEST_Workmanship_Amplitude_SubHeader(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_Workmanship_Amplitude_SubHeader'
-        primary_key = CompositeKey('keyTEST_Workmanship_Amplitude_SubHeader', 'keyFacility')
+        db_table = "TEST_Workmanship_Amplitude_SubHeader"
+        primary_key = CompositeKey(
+            "keyTEST_Workmanship_Amplitude_SubHeader", "keyFacility"
+        )

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_MixerParams(BaseModel):
@@ -16,5 +16,4 @@ class CCA_MixerParams(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_MixerParams'
-
+        db_table = "CCA_MixerParams"

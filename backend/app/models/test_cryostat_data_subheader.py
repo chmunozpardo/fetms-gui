@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_Cryostat_data_SubHeader(BaseModel):
@@ -16,5 +16,5 @@ class TEST_Cryostat_data_SubHeader(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_Cryostat_data_SubHeader'
-        primary_key = CompositeKey('keyId', 'keyFacility')
+        db_table = "TEST_Cryostat_data_SubHeader"
+        primary_key = CompositeKey("keyId", "keyFacility")

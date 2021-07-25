@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TEST_IFSpectrum(BaseModel):
@@ -15,5 +15,5 @@ class CCA_TEST_IFSpectrum(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TEST_IFSpectrum'
+        db_table = "CCA_TEST_IFSpectrum"
         primary_key = False

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_Workmanship_Phase(BaseModel):
@@ -14,5 +14,5 @@ class TEST_Workmanship_Phase(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_Workmanship_Phase'
+        db_table = "TEST_Workmanship_Phase"
         primary_key = False

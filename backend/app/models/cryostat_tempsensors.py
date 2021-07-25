@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Cryostat_tempsensors(BaseModel):
@@ -19,5 +19,5 @@ class Cryostat_tempsensors(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Cryostat_tempsensors'
+        db_table = "Cryostat_tempsensors"
         primary_key = False

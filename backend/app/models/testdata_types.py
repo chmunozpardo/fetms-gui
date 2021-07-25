@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TestData_Types(BaseModel):
@@ -8,5 +8,5 @@ class TestData_Types(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TestData_Types'
+        db_table = "TestData_Types"
 

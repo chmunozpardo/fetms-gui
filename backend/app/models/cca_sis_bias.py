@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_SIS_bias(BaseModel):
@@ -15,5 +15,5 @@ class CCA_SIS_bias(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_SIS_bias'
+        db_table = "CCA_SIS_bias"
         primary_key = False

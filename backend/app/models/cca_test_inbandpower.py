@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TEST_InBandPower(BaseModel):
@@ -13,5 +13,5 @@ class CCA_TEST_InBandPower(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TEST_InBandPower'
+        db_table = "CCA_TEST_InBandPower"
         primary_key = False

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class SourceRotationAngles(BaseModel):
@@ -12,5 +12,5 @@ class SourceRotationAngles(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'SourceRotationAngles'
+        db_table = "SourceRotationAngles"
 

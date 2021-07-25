@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_PhaseJitter(BaseModel):
@@ -11,5 +11,5 @@ class WCA_PhaseJitter(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_PhaseJitter'
+        db_table = "WCA_PhaseJitter"
         primary_key = False

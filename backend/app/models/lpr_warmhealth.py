@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class LPR_WarmHealth(BaseModel):
@@ -16,5 +16,5 @@ class LPR_WarmHealth(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'LPR_WarmHealth'
+        db_table = "LPR_WarmHealth"
         primary_key = False

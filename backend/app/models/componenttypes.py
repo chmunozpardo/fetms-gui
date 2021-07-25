@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class ComponentTypes(BaseModel):
@@ -9,5 +9,5 @@ class ComponentTypes(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'ComponentTypes'
+        db_table = "ComponentTypes"
 

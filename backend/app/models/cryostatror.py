@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CryostatROR(BaseModel):
@@ -9,5 +9,5 @@ class CryostatROR(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CryostatROR'
+        db_table = "CryostatROR"
         primary_key = False

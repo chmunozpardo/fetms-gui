@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class IFTotalPower(BaseModel):
@@ -13,5 +13,5 @@ class IFTotalPower(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'IFTotalPower'
+        db_table = "IFTotalPower"
         primary_key = False

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_FineLOSweep_SubHeader(BaseModel):
@@ -19,5 +19,5 @@ class TEST_FineLOSweep_SubHeader(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_FineLOSweep_SubHeader'
-        primary_key = CompositeKey('keyFacility', 'keyId')
+        db_table = "TEST_FineLOSweep_SubHeader"
+        primary_key = CompositeKey("keyFacility", "keyId")

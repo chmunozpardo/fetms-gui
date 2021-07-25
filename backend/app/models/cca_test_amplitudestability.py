@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TEST_AmplitudeStability(BaseModel):
@@ -14,5 +14,5 @@ class CCA_TEST_AmplitudeStability(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TEST_AmplitudeStability'
+        db_table = "CCA_TEST_AmplitudeStability"
         primary_key = False

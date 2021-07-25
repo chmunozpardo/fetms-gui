@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_AMNoise(BaseModel):
@@ -14,5 +14,5 @@ class WCA_AMNoise(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_AMNoise'
+        db_table = "WCA_AMNoise"
         primary_key = False

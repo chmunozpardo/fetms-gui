@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_IFSpectrum_urls(BaseModel):
@@ -18,5 +18,5 @@ class TEST_IFSpectrum_urls(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_IFSpectrum_urls'
+        db_table = "TEST_IFSpectrum_urls"
 

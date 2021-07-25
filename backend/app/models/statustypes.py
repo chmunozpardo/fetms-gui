@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class StatusTypes(BaseModel):
@@ -8,5 +8,5 @@ class StatusTypes(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'StatusTypes'
+        db_table = "StatusTypes"
 

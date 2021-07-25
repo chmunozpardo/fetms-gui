@@ -1,24 +1,15 @@
 import sys
-import math
-from typing import Optional
 from fastapi import APIRouter
-from peewee import JOIN, fn
-from ..models.front_ends import Front_Ends
-from ..models.fe_config import FE_Config
-from ..models.testdata_header import TestData_header
-from ..models.test_workmanship_amplitude_subheader import TEST_Workmanship_Amplitude_SubHeader
-from ..models.test_workmanship_amplitude import TEST_Workmanship_Amplitude
-from playhouse.shortcuts import model_to_dict
+from app.models.testdata_header import TestData_header
+from app.models.test_workmanship_amplitude_subheader import (
+    TEST_Workmanship_Amplitude_SubHeader,
+)
+from app.models.test_workmanship_amplitude import TEST_Workmanship_Amplitude
 import datetime
 
 
-def yToTemp(noiseTemp, Yfactor):
-    return (noiseTemp.TAmbient - Yfactor * 77)/(Yfactor-1)
-
-
 routerWorkmanshipAmplitude = APIRouter(
-    prefix="/workmanship_amplitude",
-    tags=["workmanship_amplitude"]
+    prefix="/workmanship_amplitude", tags=["workmanship_amplitude"]
 )
 
 
@@ -28,18 +19,17 @@ async def getWorkmanshipAmplitudeResults(keyheader: int):
     NT = TEST_Workmanship_Amplitude.alias()
     NT_SH = TEST_Workmanship_Amplitude_SubHeader.alias()
     TD_H = TestData_header.alias()
-    query = NT.select() \
-        .where((NT.fkHeader == keyheader))
+    query = NT.select().where((NT.fkHeader == keyheader))
     timestamp_initial = query.get().TS
-    element = datetime.datetime.strptime(
-        timestamp_initial, "%Y-%m-%d %H:%M:%S.%f")
+    element = datetime.datetime.strptime(timestamp_initial, "%Y-%m-%d %H:%M:%S.%f")
     timestamp = datetime.datetime.timestamp(element)
     timestamp_initial = timestamp
     min_ts = 0
     max_ts = sys.float_info.min
     for workmanship_amplitude in query:
         element = datetime.datetime.strptime(
-            workmanship_amplitude.TS, "%Y-%m-%d %H:%M:%S.%f")
+            workmanship_amplitude.TS, "%Y-%m-%d %H:%M:%S.%f"
+        )
         timestamp = datetime.datetime.timestamp(element)
         max_ts = timestamp - timestamp_initial
         item = {
@@ -69,7 +59,7 @@ async def getWorkmanshipAmplitudeResults(keyheader: int):
             "CryoTemp9": workmanship_amplitude.CryoTemp9,
             "CryoTemp10": workmanship_amplitude.CryoTemp10,
             "CryoTemp11": workmanship_amplitude.CryoTemp11,
-            "CryoTemp12": workmanship_amplitude.CryoTemp12
+            "CryoTemp12": workmanship_amplitude.CryoTemp12,
         }
         data.append(item)
     result = {

@@ -35,3 +35,5 @@ Progress so far:
      - Beam Pattern
      - LO Locking
      - IF Spectrum
+
+### Working on authentication

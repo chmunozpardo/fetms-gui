@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TEST_PolAccuracy(BaseModel):
@@ -13,5 +13,5 @@ class CCA_TEST_PolAccuracy(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TEST_PolAccuracy'
+        db_table = "CCA_TEST_PolAccuracy"
         primary_key = False

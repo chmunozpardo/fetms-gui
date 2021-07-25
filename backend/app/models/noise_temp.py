@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Noise_Temp(BaseModel):
@@ -62,5 +62,5 @@ class Noise_Temp(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Noise_Temp'
+        db_table = "Noise_Temp"
         primary_key = False

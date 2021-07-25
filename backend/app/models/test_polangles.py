@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_PolAngles(BaseModel):
@@ -14,5 +14,5 @@ class TEST_PolAngles(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_PolAngles'
+        db_table = "TEST_PolAngles"
         primary_key = False

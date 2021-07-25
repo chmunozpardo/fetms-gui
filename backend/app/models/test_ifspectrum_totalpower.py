@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_IFSpectrum_TotalPower(BaseModel):
@@ -11,5 +11,5 @@ class TEST_IFSpectrum_TotalPower(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_IFSpectrum_TotalPower'
-        primary_key = CompositeKey('keyId', 'fkFacility')
+        db_table = "TEST_IFSpectrum_TotalPower"
+        primary_key = CompositeKey("keyId", "fkFacility")

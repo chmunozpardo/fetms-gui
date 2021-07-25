@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CPDS_monitor(BaseModel):
@@ -22,5 +22,5 @@ class CPDS_monitor(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CPDS_monitor'
+        db_table = "CPDS_monitor"
         primary_key = False

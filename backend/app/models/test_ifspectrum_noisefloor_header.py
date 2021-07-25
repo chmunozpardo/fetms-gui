@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_IFSpectrum_NoiseFloor_Header(BaseModel):
@@ -9,5 +9,5 @@ class TEST_IFSpectrum_NoiseFloor_Header(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_IFSpectrum_NoiseFloor_Header'
-        primary_key = CompositeKey('keyId', 'fkFacility')
+        db_table = "TEST_IFSpectrum_NoiseFloor_Header"
+        primary_key = CompositeKey("keyId", "fkFacility")

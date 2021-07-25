@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_AmplitudeStability(BaseModel):
@@ -13,5 +13,5 @@ class WCA_AmplitudeStability(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_AmplitudeStability'
+        db_table = "WCA_AmplitudeStability"
         primary_key = False

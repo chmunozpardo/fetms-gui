@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class IFSwitchTemps(BaseModel):
@@ -12,5 +12,5 @@ class IFSwitchTemps(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'IFSwitchTemps'
+        db_table = "IFSwitchTemps"
         primary_key = False

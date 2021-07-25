@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Noise_Temp_SubHeader(BaseModel):
@@ -26,5 +26,5 @@ class Noise_Temp_SubHeader(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Noise_Temp_SubHeader'
-        primary_key = CompositeKey('keyId', 'keyFacility')
+        db_table = "Noise_Temp_SubHeader"
+        primary_key = CompositeKey("keyId", "keyFacility")

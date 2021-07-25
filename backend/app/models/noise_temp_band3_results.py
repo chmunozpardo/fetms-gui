@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Noise_Temp_Band3_Results(BaseModel):
@@ -12,5 +12,5 @@ class Noise_Temp_Band3_Results(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Noise_Temp_Band3_Results'
+        db_table = "Noise_Temp_Band3_Results"
         primary_key = False

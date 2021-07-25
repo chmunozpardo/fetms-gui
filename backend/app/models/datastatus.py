@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class DataStatus(BaseModel):
@@ -7,5 +7,5 @@ class DataStatus(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'DataStatus'
+        db_table = "DataStatus"
 

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCAs(BaseModel):
@@ -24,5 +24,5 @@ class WCAs(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCAs'
+        db_table = "WCAs"
 

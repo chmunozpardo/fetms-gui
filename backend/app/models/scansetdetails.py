@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class ScanSetDetails(BaseModel):
@@ -20,5 +20,5 @@ class ScanSetDetails(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'ScanSetDetails'
+        db_table = "ScanSetDetails"
 

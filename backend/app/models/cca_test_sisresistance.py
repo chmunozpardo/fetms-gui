@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TEST_SISResistance(BaseModel):
@@ -11,5 +11,5 @@ class CCA_TEST_SISResistance(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TEST_SISResistance'
+        db_table = "CCA_TEST_SISResistance"
 

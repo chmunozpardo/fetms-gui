@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TempSensorConfig(BaseModel):
@@ -14,5 +14,4 @@ class CCA_TempSensorConfig(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TempSensorConfig'
-
+        db_table = "CCA_TempSensorConfig"

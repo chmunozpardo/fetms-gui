@@ -11,10 +11,7 @@ from playhouse.shortcuts import model_to_dict
 from fastapi_redis_cache import cache
 
 
-routerBeamPattern = APIRouter(
-    prefix="/beam_pattern",
-    tags=["beam_pattern"]
-)
+routerBeamPattern = APIRouter(prefix="/beam_pattern", tags=["beam_pattern"])
 
 
 @routerBeamPattern.get("/results", summary="Result of Health Check")
@@ -24,14 +21,11 @@ async def getBeamPatternResults(keyheader: int):
     SSD = ScanSetDetails.alias()
     SD = ScanDetails.alias()
     BL_NF = BeamListings_farfield.alias()
-    query = SSD.select() \
-        .where((SSD.fkHeader == keyheader))
+    query = SSD.select().where((SSD.fkHeader == keyheader))
     ssd_keyid = query.get().keyId
-    query = SD.select() \
-        .where(SD.fkScanSetDetails == ssd_keyid)
+    query = SD.select().where(SD.fkScanSetDetails == ssd_keyid)
     sd_keyid = query.get().keyId
-    query = BL_NF.select(BL_NF) \
-        .where(BL_NF.fkScanDetails == sd_keyid)
+    query = BL_NF.select(BL_NF).where(BL_NF.fkScanDetails == sd_keyid)
     min_x = sys.float_info.max
     max_x = -sys.float_info.max
     min_y = sys.float_info.max
@@ -55,21 +49,13 @@ async def getBeamPatternResults(keyheader: int):
         max_amp = max(max_amp, temp_amp)
         min_phase = min(min_phase, temp_phase)
         max_phase = max(max_phase, temp_phase)
-        data_amp.append({
-            "x": temp_x,
-            "y": temp_y,
-            "value": temp_amp
-        })
-        data_phase.append({
-            "x": temp_x,
-            "y": temp_y,
-            "value": temp_phase
-        })
+        data_amp.append({"x": temp_x, "y": temp_y, "value": temp_amp})
+        data_phase.append({"x": temp_x, "y": temp_y, "value": temp_phase})
 
-    max_amp = math.ceil(max_amp/10.0)*10.0
-    min_amp = math.floor(min_amp/10.0)*10.0
-    max_phase = math.ceil(max_phase/10.0)*10.0
-    min_phase = math.floor(min_phase/10.0)*10.0
+    max_amp = math.ceil(max_amp / 10.0) * 10.0
+    min_amp = math.floor(min_amp / 10.0) * 10.0
+    max_phase = math.ceil(max_phase / 10.0) * 10.0
+    min_phase = math.floor(min_phase / 10.0) * 10.0
     result = {
         "xSize": math.sqrt(total_points),
         "ySize": math.sqrt(total_points),
@@ -82,6 +68,6 @@ async def getBeamPatternResults(keyheader: int):
         "minPhase": min_phase,
         "maxPhase": max_phase,
         "dataAmp": data_amp,
-        "dataPhase": data_phase
+        "dataPhase": data_phase,
     }
     return result

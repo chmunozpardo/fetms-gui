@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class FE_StatusLocationAndNotes(BaseModel):
@@ -15,5 +15,5 @@ class FE_StatusLocationAndNotes(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'FE_StatusLocationAndNotes'
-        primary_key = CompositeKey('keyFacility', 'keyId')
+        db_table = "FE_StatusLocationAndNotes"
+        primary_key = CompositeKey("keyFacility", "keyId")

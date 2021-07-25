@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_LOLockTest(BaseModel):
@@ -26,5 +26,5 @@ class TEST_LOLockTest(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_LOLockTest'
-        primary_key = CompositeKey('keyId', 'fkFacility')
+        db_table = "TEST_LOLockTest"
+        primary_key = CompositeKey("keyId", "fkFacility")

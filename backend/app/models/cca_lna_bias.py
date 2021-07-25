@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_LNA_bias(BaseModel):
@@ -15,5 +15,5 @@ class CCA_LNA_bias(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_LNA_bias'
+        db_table = "CCA_LNA_bias"
         primary_key = False

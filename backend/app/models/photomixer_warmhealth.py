@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Photomixer_WarmHealth(BaseModel):
@@ -11,5 +11,5 @@ class Photomixer_WarmHealth(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Photomixer_WarmHealth'
+        db_table = "Photomixer_WarmHealth"
         primary_key = False

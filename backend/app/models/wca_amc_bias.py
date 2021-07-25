@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_AMC_bias(BaseModel):
@@ -17,10 +17,10 @@ class WCA_AMC_bias(BaseModel):
     VGE = FloatField()
     MultD = FloatField()
     MultD_Current = FloatField()
-    _5Vsupply = FloatField(column_name='5Vsupply')
+    _5Vsupply = FloatField(column_name="5Vsupply")
     TS = TimestampField()
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_AMC_bias'
+        db_table = "WCA_AMC_bias"
         primary_key = False

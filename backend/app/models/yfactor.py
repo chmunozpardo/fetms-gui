@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Yfactor(BaseModel):
@@ -13,5 +13,5 @@ class Yfactor(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Yfactor'
+        db_table = "Yfactor"
         primary_key = False

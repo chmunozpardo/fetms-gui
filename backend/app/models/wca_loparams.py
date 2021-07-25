@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_LOParams(BaseModel):
@@ -14,5 +14,4 @@ class WCA_LOParams(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_LOParams'
-
+        db_table = "WCA_LOParams"

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_MaxSafePower(BaseModel):
@@ -13,5 +13,5 @@ class WCA_MaxSafePower(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_MaxSafePower'
+        db_table = "WCA_MaxSafePower"
         primary_key = False

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class CCA_TEST_PowerVariation(BaseModel):
@@ -15,5 +15,5 @@ class CCA_TEST_PowerVariation(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'CCA_TEST_PowerVariation'
+        db_table = "CCA_TEST_PowerVariation"
         primary_key = False

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class IFSpectrum(BaseModel):
@@ -9,5 +9,5 @@ class IFSpectrum(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'IFSpectrum'
+        db_table = "IFSpectrum"
         primary_key = False

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class SoftwareVersions(BaseModel):
@@ -10,5 +10,5 @@ class SoftwareVersions(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'SoftwareVersions'
+        db_table = "SoftwareVersions"
 

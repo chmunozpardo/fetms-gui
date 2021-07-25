@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class DatabaseDefaults(BaseModel):
@@ -6,5 +6,5 @@ class DatabaseDefaults(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'DatabaseDefaults'
+        db_table = "DatabaseDefaults"
         primary_key = False

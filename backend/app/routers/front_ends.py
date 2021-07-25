@@ -1,15 +1,11 @@
 from fastapi import APIRouter
-from peewee import JOIN, fn
+from peewee import fn
 from app.models.front_ends import Front_Ends
 from app.models.fe_config import FE_Config
 from app.models.fe_statuslocationandnotes import FE_StatusLocationAndNotes
 from playhouse.shortcuts import model_to_dict
-from fastapi_redis_cache import cache
 
-routerFrontEnds = APIRouter(
-    prefix="/front_ends",
-    tags=["front_ends"]
-)
+routerFrontEnds = APIRouter(prefix="/front_ends", tags=["front_ends"])
 
 
 @routerFrontEnds.get("/all", summary="List of Front Ends")
@@ -36,12 +32,16 @@ async def getFullFrontEnds():
     # !This was faster than doing everything in one single query
     for fe in query_fe:
         # We get this last Config for this Front End
-        query_config = FE_C.select(fn.MAX(FE_C.keyFEConfig)) \
-            .where(FE_C.fkFront_Ends == fe.keyFrontEnds)
+        query_config = FE_C.select(fn.MAX(FE_C.keyFEConfig)).where(
+            FE_C.fkFront_Ends == fe.keyFrontEnds
+        )
         # We get the last Status, Location and Notes
-        query_sln = FE_SLN.select() \
-            .where(FE_SLN.fkFEConfig == query_config.scalar()) \
-            .order_by(FE_SLN.keyId.desc()).get()
+        query_sln = (
+            FE_SLN.select()
+            .where(FE_SLN.fkFEConfig == query_config.scalar())
+            .order_by(FE_SLN.keyId.desc())
+            .get()
+        )
         # We prepare the result
         item = {
             "config": query_config.scalar(),

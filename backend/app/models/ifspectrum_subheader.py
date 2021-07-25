@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class IFSpectrum_SubHeader(BaseModel):
@@ -24,5 +24,5 @@ class IFSpectrum_SubHeader(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'IFSpectrum_SubHeader'
-        primary_key = CompositeKey('keyId', 'keyFacility')
+        db_table = "IFSpectrum_SubHeader"
+        primary_key = CompositeKey("keyId", "keyFacility")

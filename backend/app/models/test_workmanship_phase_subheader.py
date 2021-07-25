@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class TEST_Workmanship_Phase_SubHeader(BaseModel):
@@ -19,5 +19,5 @@ class TEST_Workmanship_Phase_SubHeader(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'TEST_Workmanship_Phase_SubHeader'
-        primary_key = CompositeKey('keyTEST_Workmanship_Phase_SubHeader', 'keyFacilty')
+        db_table = "TEST_Workmanship_Phase_SubHeader"
+        primary_key = CompositeKey("keyTEST_Workmanship_Phase_SubHeader", "keyFacilty")

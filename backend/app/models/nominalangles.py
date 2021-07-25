@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class NominalAngles(BaseModel):
@@ -10,5 +10,5 @@ class NominalAngles(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'NominalAngles'
+        db_table = "NominalAngles"
 

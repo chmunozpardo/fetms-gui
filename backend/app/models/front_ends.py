@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class Front_Ends(BaseModel):
@@ -13,5 +13,5 @@ class Front_Ends(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'Front_Ends'
-        primary_key = CompositeKey('keyFacility', 'keyFrontEnds')
+        db_table = "Front_Ends"
+        primary_key = CompositeKey("keyFacility", "keyFrontEnds")

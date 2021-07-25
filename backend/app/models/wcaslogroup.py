@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCAsLOgroup(BaseModel):
@@ -11,5 +11,5 @@ class WCAsLOgroup(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCAsLOgroup'
+        db_table = "WCAsLOgroup"
         primary_key = False

@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class BeamEfficiencies(BaseModel):
@@ -77,5 +77,5 @@ class BeamEfficiencies(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'BeamEfficiencies'
+        db_table = "BeamEfficiencies"
 

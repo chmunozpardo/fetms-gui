@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_OutputPower(BaseModel):
@@ -16,5 +16,5 @@ class WCA_OutputPower(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_OutputPower'
+        db_table = "WCA_OutputPower"
         primary_key = False

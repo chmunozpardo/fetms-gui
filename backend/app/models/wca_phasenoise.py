@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class WCA_PhaseNoise(BaseModel):
@@ -12,5 +12,5 @@ class WCA_PhaseNoise(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'WCA_PhaseNoise'
+        db_table = "WCA_PhaseNoise"
         primary_key = False

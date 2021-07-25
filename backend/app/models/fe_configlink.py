@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class FE_ConfigLink(BaseModel):
@@ -12,5 +12,5 @@ class FE_ConfigLink(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'FE_ConfigLink'
+        db_table = "FE_ConfigLink"
 

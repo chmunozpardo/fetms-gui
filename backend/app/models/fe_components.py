@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class FE_Components(BaseModel):
@@ -20,5 +20,5 @@ class FE_Components(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'FE_Components'
-        primary_key = CompositeKey('keyFacility', 'keyId')
+        db_table = "FE_Components"
+        primary_key = CompositeKey("keyFacility", "keyId")

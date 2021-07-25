@@ -1,4 +1,4 @@
-from .basemodel import *
+from app.models.basemodel import *
 
 
 class FLOOGdist(BaseModel):
@@ -10,5 +10,5 @@ class FLOOGdist(BaseModel):
 
     class Meta:
         orm_mode = True
-        db_table = 'FLOOGdist'
+        db_table = "FLOOGdist"
         primary_key = False

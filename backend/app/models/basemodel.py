@@ -1,5 +1,5 @@
 from peewee import *
-from ..database import conn
+from app.database import conn
 
 
 class BaseModel(Model):
