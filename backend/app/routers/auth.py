@@ -5,14 +5,13 @@ from typing import Optional
 from app.models.users import Users
 from fastapi import APIRouter
 from fastapi import Depends, HTTPException, status, Response, Request
-from fastapi.responses import RedirectResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi.security import OAuth2PasswordRequestForm, OAuth2
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from fastapi.openapi.models import OAuthFlows as OAuthFlowsModel
-from fastapi.openapi.utils import get_openapi
 from fastapi.security.utils import get_authorization_scheme_param
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from playhouse.shortcuts import model_to_dict
 
 load_dotenv()
 
@@ -33,37 +32,7 @@ class TokenData(BaseModel):
 routerAuth = APIRouter(prefix="/authentication", tags=["authentication"])
 
 
-class OAuth2PasswordBearerCookie(OAuth2):
-    def __init__(
-        self,
-        tokenUrl: str,
-        scheme_name: str = None,
-        scopes: dict = None,
-        auto_error: bool = True,
-    ):
-        if not scopes:
-            scopes = {}
-        flows = OAuthFlowsModel(password={"tokenUrl": tokenUrl, "scopes": scopes})
-        super().__init__(flows=flows, scheme_name=scheme_name, auto_error=auto_error)
-
-    async def __call__(self, request: Request) -> Optional[str]:
-        authorization: str = request.cookies.get("Authorization")
-
-        scheme, param = get_authorization_scheme_param(authorization)
-        if not authorization or scheme.lower() != "bearer":
-            if self.auto_error:
-                raise HTTPException(
-                    status_code=status.HTTP_401_UNAUTHORIZED,
-                    detail="Not authenticated",
-                    headers={"WWW-Authenticate": "Bearer"},
-                )
-            else:
-                return None
-
-        return param
-
-
-oauth2_scheme = OAuth2PasswordBearerCookie(tokenUrl="/authentication/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/authentication/token")
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
@@ -106,9 +75,9 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     return user
 
 
-@routerAuth.get("/users/me")
+@routerAuth.get("/me")
 async def read_users_me(current_user: Users = Depends(get_current_user)):
-    return current_user
+    return model_to_dict(current_user)
 
 
 @routerAuth.post("/token", response_model=Token)
@@ -121,15 +90,11 @@ async def login(response: Response, form_data: OAuth2PasswordRequestForm = Depen
         data={"email": user_dict.Email, "name": user_dict.Name},
         expires_delta=access_token_expires,
     )
-    token = jsonable_encoder(access_token)
 
-    response.set_cookie(key="Authorization", value=f"Bearer {token}", httponly=True)
-
-    return
+    return {"access_token": access_token, "token_type": "Bearer"}
 
 
 @routerAuth.get("/logout")
 async def logout(response: Response):
-    response = RedirectResponse(url="/authentication/users/me")
     response.delete_cookie(key="Authorization")
-    return response
+    return

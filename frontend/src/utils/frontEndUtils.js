@@ -6,6 +6,12 @@ export const componentsOptions = [
     image: { avatar: true, src: "/nrao_logo.png" }
   },
   {
+    key: 'Band 1',
+    text: 'Band 1',
+    value: '1',
+    image: { avatar: true, src: "/nrao_logo.png" }
+  },
+  {
     key: 'Band 3',
     text: 'Band 3',
     value: '3',

@@ -6,13 +6,15 @@ export const LOLockingBoolean = [
   {
     key: 'LORTM',
     text: 'LORTM Lock',
-    value: 'LORTM',
+    value: 'LORTMLocked',
     cx: (xScale) => (d) => { return xScale(d.FreqLO); },
     cy: (margin) => (d) => { return 3 * margin; },
     color: 'blue',
     tip: d3Tip()
       .attr('class', 'd3-tip')
       .offset([-10, 0])
+      .direction('s')
+      .offset([10, 0])
       .html(function (d) {
         return "<strong>Frequency:</strong> <span style='color:white'>" + (d.FreqLO) + "</span><br>" +
           "<strong> Value:</strong> <span style='color:white'>" + (d.LORTMLocked) + "</span><br>";
@@ -21,13 +23,14 @@ export const LOLockingBoolean = [
   {
     key: 'LO',
     text: 'LO Lock',
-    value: 'LO',
+    value: 'LOLocked',
     cx: (xScale) => (d) => { return xScale(d.FreqLO); },
     cy: (margin) => (d) => { return 4 * margin; },
     color: 'blue',
     tip: d3Tip()
       .attr('class', 'd3-tip')
-      .offset([-10, 0])
+      .direction('s')
+      .offset([10, 0])
       .html(function (d) {
         return "<strong>Frequency:</strong> <span style='color:white'>" + (d.FreqLO) + "</span><br>" +
           "<strong> Value:</strong> <span style='color:white'>" + (d.LOLocked) + "</span><br>";

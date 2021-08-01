@@ -58,9 +58,9 @@ export default function LOLockingPlot(props) {
             .attr('cx', obj.cx(xScale))
             .attr('cy', obj.cy(props.margin))
             .attr('r', 3)
-            .attr('stroke', function (d) { return d.LORTMLocked ? "green" : "red"; })
+            .attr('stroke', function (d) { return d[obj.value] ? "green" : "red"; })
             .attr('stroke-width', 3)
-            .attr('fill', function (d) { return d.LORTMLocked ? "green" : "red"; })
+            .attr('fill', function (d) { return d[obj.value] ? "green" : "red"; })
             .on('mouseover', obj.tip.show)
             .on('mouseout', obj.tip.hide);
         });
