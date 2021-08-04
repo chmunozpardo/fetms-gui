@@ -31,7 +31,7 @@ async def getNoiseTemperatureResults(keyheader: int, temp: Optional[bool] = True
     band = TD_H.select(TD_H.Band).where((TD_H.keyId == keyheader)).get().Band
     min_freq = sys.float_info.max
     max_freq = sys.float_info.min
-    min_y = 0
+    min_y = sys.float_info.max
     max_y = sys.float_info.min
     for noise_temp in query:
         if noise_temp.CenterIF == 4.0:
@@ -39,19 +39,22 @@ async def getNoiseTemperatureResults(keyheader: int, temp: Optional[bool] = True
         item = {}
 
         max_freq = max(max_freq, noise_temp.FreqLO + noise_temp.CenterIF)
-        if band in [9, 10]:
+        if band in [1, 9, 10]:
             min_freq = min(min_freq, noise_temp.FreqLO + noise_temp.CenterIF)
         elif band in [3, 4, 5, 6, 7, 8]:
             min_freq = min(min_freq, noise_temp.FreqLO - noise_temp.CenterIF)
         if temp:
-            max_y = max(
-                max_y,
-                yToTemp(noise_temp, noise_temp.Pol0Sb1YFactor),
-                yToTemp(noise_temp, noise_temp.Pol0Sb2YFactor),
-                yToTemp(noise_temp, noise_temp.Pol1Sb1YFactor),
-                yToTemp(noise_temp, noise_temp.Pol1Sb2YFactor),
-            )
-            if band in [9, 10]:
+            if band in [1, 9, 10]:
+                max_y = max(
+                    max_y,
+                    yToTemp(noise_temp, noise_temp.Pol0Sb1YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol1Sb1YFactor),
+                )
+                min_y = min(
+                    min_y,
+                    yToTemp(noise_temp, noise_temp.Pol0Sb1YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol1Sb1YFactor),
+                )
                 item = {
                     "FreqLO": noise_temp.FreqLO,
                     "CenterIF": noise_temp.CenterIF,
@@ -61,6 +64,20 @@ async def getNoiseTemperatureResults(keyheader: int, temp: Optional[bool] = True
                     "TColdLoad": noise_temp.TColdLoad,
                 }
             elif band in [3, 4, 5, 6, 7, 8]:
+                max_y = max(
+                    max_y,
+                    yToTemp(noise_temp, noise_temp.Pol0Sb1YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol0Sb2YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol1Sb1YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol1Sb2YFactor),
+                )
+                min_y = min(
+                    min_y,
+                    yToTemp(noise_temp, noise_temp.Pol0Sb1YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol0Sb2YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol1Sb1YFactor),
+                    yToTemp(noise_temp, noise_temp.Pol1Sb2YFactor),
+                )
                 item = {
                     "FreqLO": noise_temp.FreqLO,
                     "CenterIF": noise_temp.CenterIF,
@@ -72,14 +89,17 @@ async def getNoiseTemperatureResults(keyheader: int, temp: Optional[bool] = True
                     "TColdLoad": noise_temp.TColdLoad,
                 }
         else:
-            max_y = max(
-                max_y,
-                noise_temp.Pol0Sb1YFactor,
-                noise_temp.Pol0Sb2YFactor,
-                noise_temp.Pol1Sb1YFactor,
-                noise_temp.Pol1Sb2YFactor,
-            )
-            if band in [9, 10]:
+            if band in [1, 9, 10]:
+                min_y = min(
+                    min_y,
+                    noise_temp.Pol0Sb1YFactor,
+                    noise_temp.Pol1Sb1YFactor,
+                )
+                max_y = max(
+                    max_y,
+                    noise_temp.Pol0Sb1YFactor,
+                    noise_temp.Pol1Sb1YFactor,
+                )
                 item = {
                     "FreqLO": noise_temp.FreqLO,
                     "CenterIF": noise_temp.CenterIF,
@@ -87,6 +107,20 @@ async def getNoiseTemperatureResults(keyheader: int, temp: Optional[bool] = True
                     "Pol1S1": noise_temp.Pol1Sb1YFactor,
                 }
             elif band in [3, 4, 5, 6, 7, 8]:
+                min_y = min(
+                    min_y,
+                    noise_temp.Pol0Sb1YFactor,
+                    noise_temp.Pol0Sb2YFactor,
+                    noise_temp.Pol1Sb1YFactor,
+                    noise_temp.Pol1Sb2YFactor,
+                )
+                max_y = max(
+                    max_y,
+                    noise_temp.Pol0Sb1YFactor,
+                    noise_temp.Pol0Sb2YFactor,
+                    noise_temp.Pol1Sb1YFactor,
+                    noise_temp.Pol1Sb2YFactor,
+                )
                 item = {
                     "FreqLO": noise_temp.FreqLO,
                     "CenterIF": noise_temp.CenterIF,
@@ -97,9 +131,11 @@ async def getNoiseTemperatureResults(keyheader: int, temp: Optional[bool] = True
                 }
         data[-1].append(item)
     if temp:
-        max_y = math.ceil(max_y / 100.0) * 100.0
+        max_y = math.ceil(max_y / 50.0) * 50.0
+        min_y = math.floor(min_y / 50.0) * 50.0
     else:
-        max_y = math.ceil(max_y / 5.0) * 5.0
+        max_y = math.ceil(max_y / 0.5) * 0.5
+        min_y = math.floor(min_y / 0.5) * 0.5
     result = {
         "minFreq": min_freq,
         "maxFreq": max_freq,
