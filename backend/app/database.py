@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from peewee import *
+from playhouse.shortcuts import ReconnectMixin
 
 load_dotenv()
 
@@ -9,6 +10,9 @@ DB_USERNAME = os.getenv("DB_USERNAME")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_DATABASE = os.getenv("DB_DATABASE")
 
-conn = MySQLDatabase(
+class ReconnectMySQLDatabase(ReconnectMixin, MySQLDatabase):
+    pass
+
+conn = ReconnectMySQLDatabase(
     database=DB_DATABASE, user=DB_USERNAME, password=DB_PASSWORD, host=DB_HOSTNAME
 )

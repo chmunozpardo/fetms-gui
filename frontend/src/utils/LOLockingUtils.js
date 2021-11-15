@@ -213,7 +213,7 @@ export const LOLockingOptions = [
     value: 'power',
     ymin: -6.0,
     ymax: 0.0,
-    ylabel: "Power [dBm]"
+    ylabel: "Voltage [V]"
   },
   {
     key: 'Current',
@@ -221,6 +221,6 @@ export const LOLockingOptions = [
     value: 'current',
     ymin: 0.90,
     ymax: 1.10,
-    ylabel: "Current [A]"
+    ylabel: "Current [mA]"
   }
 ]

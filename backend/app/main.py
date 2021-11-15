@@ -33,9 +33,18 @@ app.include_router(beam_pattern.routerBeamPattern)
 app.include_router(noise_temperature.routerNoiseTemperature)
 app.include_router(workmanship_amplitude.routerWorkmanshipAmplitude)
 
+@app.on_event("startup")
+def startup():
+    conn.connect()
+
+@app.on_event("shutdown")
+def shutdown():
+    if not conn.is_closed():
+        conn.close()
 
 origins = [
     "http://localhost:3000",
+    "http://fetms.osf.alma.cl:3000",
     "http://localhost:8000",
 ]
 
@@ -47,16 +56,3 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-@app.on_event("startup")
-async def startup():
-    print("Connecting...")
-    redis_cache = FastApiRedisCache()
-    redis_cache.init(
-        host_url=os.environ.get("REDIS_URL", LOCAL_REDIS_URL),
-        prefix="myapi-cache",
-        response_header="X-MyAPI-Cache",
-        ignore_arg_types=[Request, Response],
-    )
-    if conn.is_closed():
-        conn.connect()
