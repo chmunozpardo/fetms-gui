@@ -4,12 +4,14 @@ import BeamPatternPlot from "./plots/BeamPatternPlot";
 import { Dropdown } from "semantic-ui-react";
 import axios from "axios";
 import NraoLoader from "../loaders/NraoLoader";
+import { Form, Radio } from "semantic-ui-react";
 
 export default function BeamPattern(props) {
   let plotRef = useRef(null);
   let error = useRef(null);
   let plotComponent = useRef(null);
 
+  let [type, setType] = useState(true);
   let [isLoaded, setLoaded] = useState(false);
   let [items, setItems] = useState(null);
   let [width, setWidth] = useState(null);
@@ -43,6 +45,11 @@ export default function BeamPattern(props) {
     }
   };
 
+  const handleTypeChange = (undefined, { value }) => {
+    console.log(value);
+    setType(value === "3d");
+  };
+
   useEffect(() => {
     if (plotRef.current) {
       setWidth(plotRef.current.offsetWidth);
@@ -60,6 +67,7 @@ export default function BeamPattern(props) {
         height={height}
         margin={10}
         items={items}
+        type={type}
       />
     );
   } else {
@@ -78,6 +86,34 @@ export default function BeamPattern(props) {
           ref={plotRef}
         >
           {plotComponent.current}
+        </Col>
+        <Col
+          className="border-box p-0 h-100"
+          xs={{ span: 2, offset: 0 }}
+        >
+          <Row key="optionsList" style={{ margin: "1rem" }}>
+            <Form>
+              <Form.Field> Selected value: </Form.Field>
+              <Form.Field>
+                <Radio
+                  label="3D"
+                  name="radioGroup"
+                  value="3d"
+                  checked={type}
+                  onChange={handleTypeChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Radio
+                  label="Image"
+                  name="radioGroup"
+                  value="image"
+                  checked={!type}
+                  onChange={handleTypeChange}
+                />
+              </Form.Field>
+            </Form>
+          </Row>
         </Col>
       </Row>
     </Container>
